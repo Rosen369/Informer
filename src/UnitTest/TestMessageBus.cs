@@ -9,13 +9,26 @@ namespace UnitTest
     [TestClass]
     public class TestMessageBus
     {
+        private MessageModel _msg = new MessageModel { Name = "Rosen" };
+
         [TestMethod]
         public void TestSubscribe()
         {
-            var msg = new MessageModel { Name = "Rosen" };
             var messageBus = MessageBus.GetInstance();
             messageBus.Subscribe<MessageModel>(GetMessage);
-            messageBus.Emit(msg);
+            messageBus.Emit(_msg);
+        }
+
+        [TestMethod]
+        public void TestUnSubscribe()
+        {
+            var messageBus = MessageBus.GetInstance();
+            var token = messageBus.Subscribe<MessageModel>(s =>
+            {
+                Assert.Fail("This should not be executed due to unsubscribing.");
+            });
+            messageBus.Unsubscribe(token);
+            messageBus.Emit(_msg);
         }
 
         public void GetMessage(MessageModel message)
