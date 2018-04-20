@@ -38,8 +38,7 @@ messageBus.Unsubscribe(token);
 
 ```c#
 var msg = new MessageModel { Name = "Rosen" };
-var messageBus = MessageBus.GetInstance();
-messageBus.Emit(_msg);
+MessageBus.GetInstance().Emit(msg);
 ```
 
 # Customer event handler
