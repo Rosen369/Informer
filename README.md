@@ -44,10 +44,10 @@ MessageBus.GetInstance().Emit(msg);
 # Customer event handler
 
 ```c#
-public void HaldelMessage(MessageModel message)
+public void HandleMessage(MessageModel message)
 {
     //handle the message
 }
 
-MessageBus.GetInstance().Subscribe<MessageModel>(HaldelMessage);
+MessageBus.GetInstance().Subscribe<MessageModel>(HandleMessage);
 ```
