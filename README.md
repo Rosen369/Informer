@@ -1,18 +1,26 @@
 # Informer
-Simple message bus for net core and standard
+
+Simple message bus for .Net
+
+__Supported platforms:__
+
+- .NET Framework 4.5+
+- .NET Standard 2.0+
 
 [![license](https://img.shields.io/github/license/rosen369/informer.svg)](https://github.com/Rosen369/Informer/blob/master/LICENSE)
 [![NuGet](https://img.shields.io/nuget/dt/informer.svg)](https://www.nuget.org/packages/Informer/)
 
-# Feeds
-* NuGet [![NuGet](https://img.shields.io/nuget/v/Informer.svg)](https://www.nuget.org/packages/Informer/)
+## Feeds
 
-# Let's get started
+- NuGet [![NuGet](https://img.shields.io/nuget/v/Informer.svg)](https://www.nuget.org/packages/Informer/)
 
-From **NuGet**: 
-* PM> Install-Package Informer
+## Let's get started
 
-# Implement a message model
+From **NuGet**:
+
+- PM> Install-Package Informer
+
+## Implement a message model
 
 ```c#
 using Informer;
@@ -23,7 +31,7 @@ public class MessageModel : Message
 }
 ```
 
-# Subscribe and Unsubscribe
+## Subscribe and Unsubscribe
 
 ```c#
 var messageBus = MessageBus.GetInstance();
@@ -34,14 +42,14 @@ var token = messageBus.Subscribe<MessageModel>(s =>
 messageBus.Unsubscribe(token);
 ```
 
-# Emit message
+## Emit message
 
 ```c#
 var msg = new MessageModel { Name = "Rosen" };
 MessageBus.GetInstance().Emit(msg);
 ```
 
-# Customer event handler
+## Customer event handler
 
 ```c#
 public void HandleMessage(MessageModel message)
